@@ -14,3 +14,6 @@ Get the development version from the github:
 Install the `shiny` package as usual.
 `install.packages("shiny")`
 
+### App Demo
+
+![alt tag](https://github.com/cryptomanic/Twitter-Web-App/blob/master/www/demo.png)
