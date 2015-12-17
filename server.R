@@ -11,10 +11,17 @@ library(tweeteR)
 shinyServer(function(input, output) {
   
   key     <- readline("Enter your API Key : ")
-  secret <- readline("Enter your API Secret : ")
+  secret  <- readline("Enter your API Secret : ")
   token   <- tweetOauth(key, secret)
   
   output$tweets <- renderTable({
-    hashTag(token, input$hashtag, input$count)
-  })
+    data <- hashTag(token, input$hashtag, input$count)
+    img_urls<- vector("character")
+    
+    for(url in img_profile) {
+      img_urls <- append(img_urls, as.character(img(src = url)))
+    }
+    
+    cbind(img_urls, data)
+  }, sanitize.text.function = function(x) x)
 })
