@@ -15,9 +15,15 @@ shinyUI(fluidPage(
     sidebarPanel(
       textInput("hashtag", "HashTag"),
       textInput("count", "Maximum Tweets"),
-      submitButton(text = "Submit")
+      actionButton("dispByHt", "Submit"),
+      br(), br(), br(),
+      textInput("username", "User Name")
     ),
-    mainPanel(tableOutput("tweets"))
+    
+    
+    mainPanel(
+      tableOutput("userinfo"),
+      tableOutput("tweets"))
   )
   
   
