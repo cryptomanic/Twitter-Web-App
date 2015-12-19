@@ -14,14 +14,27 @@ shinyServer(function(input, output) {
   secret  <- readline("Enter your API Secret : ")
   token   <- tweetOauth(key, secret)
   
+  token <- tweetOauth(key, secret)
+  
   output$tweets <- renderTable({
-    data <- hashTag(token, input$hashtag, input$count)
-    img_urls<- vector("character")
+    input$dispByHt
+    isolate({
+      data <- hashTag(token, input$hashtag, input$count)
+      img_urls<- vector("character")
+      
+      for(url in img_profile) {
+        img_urls <- append(img_urls, as.character(img(src = url)))
+      }
+      
+      cbind(pic = img_urls, data[,-1])
+    })
     
-    for(url in img_profile) {
-      img_urls <- append(img_urls, as.character(img(src = url)))
-    }
-    
-    cbind(img_urls, data)
   }, sanitize.text.function = function(x) x)
+  
+  output$userinfo <- renderTable({
+    data <- userInfo(token, input$username)
+    pic <- profile_pic
+    if (! is.null(pic)) cbind(pic = as.character(img(src = pic)), data.frame(data))
+  }, sanitize.text.function = function(x) x)
+  
 })
