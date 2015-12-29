@@ -1,30 +1,39 @@
-
-
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
-
 library(shiny)
 
-shinyUI(fluidPage(
-  titlePanel("Twitter Search"),
-  
-  sidebarLayout(
-    sidebarPanel(
-      textInput("hashtag", "HashTag"),
-      textInput("count", "Maximum Tweets"),
-      actionButton("dispByHt", "Submit"),
-      br(), br(), br(),
-      textInput("username", "User Name")
-    ),
-    
-    
-    mainPanel(
-      tableOutput("userinfo"),
-      tableOutput("tweets"))
-  )
-  
-  
+shinyUI(navbarPage("Twitter",
+                   tabPanel("Hashtag",
+                            fluidPage(
+
+                              sidebarLayout(
+                                sidebarPanel(
+                                  textInput("hashtag", "HashTag"),
+                                  textInput("count", "Maximum Tweets"),
+                                  actionButton("dispByHt", "Submit"),
+                                  width = 3
+                                ),
+
+
+                                mainPanel(
+                                  tableOutput("tweets"))
+                              )
+
+
+                            )
+                   ),
+                   tabPanel("User Timeline",
+                            sidebarLayout(
+                              sidebarPanel(
+                                textInput("username", "User Name"),
+                                textInput("counter", "Maximum Tweets"),
+                                width = 3
+                              ),
+
+
+                              mainPanel(
+                                tableOutput("userinfo"),
+                                tableOutput("usertweets")
+                              )
+
+
+                            ))
 ))
