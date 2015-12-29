@@ -14,12 +14,23 @@ Get the development version from the github:
 Install the `shiny` package as usual.<br>
 `install.packages("shiny")`
 
-### App Demo (OLD)
+### App Demo (1)
 
 ![alt tag](https://github.com/cryptomanic/Twitter-Web-App/blob/master/www/demo.png)
 
-### App Demo (CURRENT)
+### App Demo (2)
 
 Search user on twitter by User Name.
 
 ![alt tag](https://github.com/cryptomanic/Twitter-Web-App/blob/master/www/demo2.png)
+
+### App Demo (3)
+
+Now there is a Navigation Bar at the top.<br>
+First tab displays the tweets as per the given hashtag.
+
+![alt tag](https://github.com/cryptomanic/Twitter-Web-App/blob/master/www/demo3.png)
+
+Second tab displays user information and recent tweets by him/her.
+
+![alt tag](https://github.com/cryptomanic/Twitter-Web-App/blob/master/www/demo4.png)
